@@ -1,0 +1,43 @@
+syntax = "proto3";
+package addressbook;
+
+// Some of the things you can import are built-in, ie just reference them and they work
+// For the ones that aren't, you need to download the protos somewhere and add a -I to point at them
+import "google/protobuf/timestamp.proto";
+
+// The go package that the generated files will think they're in.
+// Imagine you manually wrote the structs, where would you put them?
+option go_package = "github.com/mt-inside/protobuf-test/pkg/model";
+// can optionally say package/path;foo - foo is only needed if you're doing the thing where the package name doesn't match the directory it's in
+
+message Person {
+  string name = 1;
+  int32 id = 2;
+  string email = 3;
+
+
+  enum PhoneType {
+    MOBILE = 0;
+    HOME = 1;
+    WORK = 2;
+  }
+
+  message PhoneNumber {
+    string number = 1;
+    PhoneType type = 2;
+  }
+
+  repeated PhoneNumber phones = 4;
+
+  google.protobuf.Timestamp last_updated = 5;
+}
+
+message AddressBook {
+  repeated Person people = 1;
+}
+
+message ContactsRequest {}
+
+service BlackBook {
+  rpc GetContacts (ContactsRequest) returns (AddressBook) {}
+}
