@@ -7,6 +7,8 @@ That github repo contains both things we need
 - the protobuf runtime that we link against
 
 ## Installing
+Install `protoc`
+
 `protoc-gen-go`'s main package isn't in the root of that github repo, so if you `go get` it you're told there's no go files.
 To get the compiler plugin binary: `go install google.golang.org/protobuf/cmd/protoc-gen-go@latest`
 
