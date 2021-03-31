@@ -1,7 +1,7 @@
 package main
 
 import (
-	"io/ioutil"
+	"os"
 	"time"
 
 	"google.golang.org/protobuf/proto"
@@ -20,14 +20,14 @@ func main() {
 		panic(err)
 	}
 
-	err = ioutil.WriteFile("/tmp/proto", out, 0644)
+	err = os.WriteFile("/tmp/proto", out, 0644)
 	if err != nil {
 		panic(err)
 	}
 
 	time.Sleep(1 * time.Second)
 
-	in, err := ioutil.ReadFile("/tmp/proto")
+	in, err := os.ReadFile("/tmp/proto")
 	if err != nil {
 		panic(err)
 	}
