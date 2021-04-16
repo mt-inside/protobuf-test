@@ -1,0 +1,2 @@
+run:
+	please run //cmd:main

@@ -1,0 +1,23 @@
+; Please config file
+; Leaving this file as is is enough to use plz to build your project.
+; Please will stay on whatever version you currently have until you run
+; 'plz update', when it will download the latest available version.
+;
+; Or you can uncomment the following to pin everyone to a particular version;
+; when you change it all users will automatically get updated.
+; [please]
+; version = 15.17.1
+
+[build]
+path = /home/matt/work/go/bin:/usr/local/bin:/usr/bin:/bin
+
+[go]
+;gotool = ...
+;goroot - ... 
+importpath = github.com/mt-inside/protobuf-test/please
+
+[proto]
+GoDep = "//third_party/go:protobuf-golang"
+protoctool = //third_party/protobuf:protoc
+protocgoplugin = //third_party/go:protoc-gen-go
+language = go
